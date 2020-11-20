@@ -1,9 +1,10 @@
 .worker-card {
   background: white;
-  width: 100%;
   height: 220px;
-  border: 1px solid red;
   position: relative;
+  margin: 20px;
+  box-shadow: 2px 2px 20px rgb(206, 206, 206);
+  animation: 0.3s ease-out 0s 1 slideInBottom;
   .worker-card-top {
     display: flex;
     flex-direction: column;

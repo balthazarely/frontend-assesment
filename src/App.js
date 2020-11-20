@@ -6,6 +6,7 @@ import "./styles/app.scss";
 
 function App() {
   const [workOrders, setWorkOrders] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const getWorkers = async () => {
     const fetchedWorkOrders = await getWorkOrderAPICall();
@@ -19,8 +20,8 @@ function App() {
 
   return (
     <div className="App">
-      <Input />
-      <WorkOrdersList workOrders={workOrders} />
+      <Input setSearchQuery={setSearchQuery} />
+      <WorkOrdersList workOrders={workOrders} searchQuery={searchQuery} />
     </div>
   );
 }

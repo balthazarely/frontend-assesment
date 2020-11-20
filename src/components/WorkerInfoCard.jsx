@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { convertDate } from "../ulitity/utility";
+import Moment from "react-moment";
 
-export default function WorkerInfoCard({ workOrder }) {
+export default function WorkerInfoCard({ workOrder, searchQuery }) {
   const [worker, setWorker] = useState(null);
 
   async function getWorkerInfo() {
@@ -16,9 +18,13 @@ export default function WorkerInfoCard({ workOrder }) {
     getWorkerInfo();
   }, [setWorker]);
 
+  const testString = (name) => {
+    return name.includes(searchQuery);
+  };
+
   return (
     <div>
-      {worker ? (
+      {worker && testString(worker.name) ? (
         <div className="worker-card">
           <div className="worker-card-top">
             <div className="card-header">Work Order: {workOrder.id}</div>
@@ -36,7 +42,9 @@ export default function WorkerInfoCard({ workOrder }) {
               <div className="worker-email small">{worker.email}</div>
             </div>
           </div>
-          <div className="deadline small ">{workOrder.deadline}</div>
+          <div className="deadline small ">
+            {convertDate(workOrder.deadline)}
+          </div>
         </div>
       ) : null}
     </div>
