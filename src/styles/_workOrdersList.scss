@@ -1,13 +1,12 @@
 .list-container {
   background: #f0f5f8;
-  display: grid;
-  grid-template-columns: 50% 50%;
-  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  //   padding: 10px;
   animation: 0.3s ease-out 0s 1 slideInBottom;
 }
 
 @media only screen and (max-width: 600px) {
   .list-container {
-    grid-template-columns: 1fr;
   }
 }

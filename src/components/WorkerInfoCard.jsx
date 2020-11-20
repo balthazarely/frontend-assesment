@@ -11,20 +11,19 @@ export default function WorkerInfoCard({ workOrder, searchQuery }) {
     );
     const workerInfo = await response.json();
     setWorker(workerInfo.worker);
-    console.log(workerInfo);
   }
 
   useEffect(() => {
     getWorkerInfo();
   }, [setWorker]);
 
-  const testString = (name) => {
+  const searchCards = (name) => {
     return name.includes(searchQuery);
   };
 
   return (
     <div>
-      {worker && testString(worker.name) ? (
+      {worker && searchCards(worker.name) ? (
         <div className="worker-card">
           <div className="worker-card-top">
             <div className="card-header">Work Order: {workOrder.id}</div>
@@ -43,6 +42,7 @@ export default function WorkerInfoCard({ workOrder, searchQuery }) {
             </div>
           </div>
           <div className="deadline small ">
+            <span className="deadline-text">DEADLINE:</span>{" "}
             {convertDate(workOrder.deadline)}
           </div>
         </div>

@@ -7,6 +7,7 @@ import "./styles/app.scss";
 function App() {
   const [workOrders, setWorkOrders] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [sortDirection, setSortDirection] = useState(false);
 
   const getWorkers = async () => {
     const fetchedWorkOrders = await getWorkOrderAPICall();
@@ -15,13 +16,29 @@ function App() {
 
   useEffect(() => {
     getWorkers();
-    console.log(workOrders);
   }, []);
+
+  const changeDeadlineOrder = (workOrders) => {
+    if (sortDirection) {
+      return workOrders.sort((a, b) => (a.deadline > b.deadline ? 1 : -1));
+    } else {
+      return workOrders.sort((a, b) => (a.deadline < b.deadline ? 1 : -1));
+    }
+  };
 
   return (
     <div className="App">
-      <Input setSearchQuery={setSearchQuery} />
-      <WorkOrdersList workOrders={workOrders} searchQuery={searchQuery} />
+      <Input
+        setSearchQuery={setSearchQuery}
+        changeDeadlineOrder={changeDeadlineOrder}
+        setSortDirection={setSortDirection}
+        sortDirection={sortDirection}
+      />
+
+      <WorkOrdersList
+        workOrders={changeDeadlineOrder(workOrders)}
+        searchQuery={searchQuery}
+      />
     </div>
   );
 }
