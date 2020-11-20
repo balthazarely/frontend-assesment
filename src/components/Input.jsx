@@ -11,11 +11,13 @@ export default function Input({
       <input
         type="text"
         placeholder="Filter by workers name..."
-        onChange={(e) => setSearchQuery(e.target.value)}
+        onChange={(e) => setSearchQuery(e.target.value.toLowerCase())}
       />
-      <button onClick={() => setSortDirection(!sortDirection)}>
-        {sortDirection ? " Sort Deadline (newest)" : "Sort Deadline (oldest)"}
-      </button>
+      <div className="btn-wrapper">
+        <button onClick={() => setSortDirection(!sortDirection)}>
+          {sortDirection ? " Sort Deadline (newest)" : "Sort Deadline (oldest)"}
+        </button>
+      </div>
     </div>
   );
 }

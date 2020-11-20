@@ -18,7 +18,7 @@ export default function WorkerInfoCard({ workOrder, searchQuery }) {
   }, [setWorker]);
 
   const searchCards = (name) => {
-    return name.includes(searchQuery);
+    return name.toLowerCase().includes(searchQuery);
   };
 
   return (

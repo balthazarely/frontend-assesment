@@ -1,6 +1,9 @@
 .input-container {
   width: 30%;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
   input {
     margin: 0 auto;
     padding-left: 10px;
@@ -9,6 +12,7 @@
     outline: none;
     border: 1px solid gray;
   }
+
   button {
     margin: 10px 0;
     padding: 8px 15px;
@@ -27,6 +31,9 @@
 }
 
 @media only screen and (max-width: 600px) {
+  .input-container {
+    width: 95%;
+  }
   .input-container button {
     font-size: 10px;
   }

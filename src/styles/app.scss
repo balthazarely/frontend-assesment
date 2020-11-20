@@ -11,6 +11,13 @@
   max-width: 1000px;
   width: 100%;
   margin: 0 auto;
+  flex-direction: row;
+}
+
+@media only screen and (max-width: 600px) {
+  .App {
+    flex-direction: column;
+  }
 }
 
 @import "./workOrdersList";
